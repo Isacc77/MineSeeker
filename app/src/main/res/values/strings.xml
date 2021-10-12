@@ -12,4 +12,8 @@
     <string name="welcome_to_android_men_seeker">Welcome to Android men seeker</string>
     <string name="author_info"><![CDATA[By: Shuai Li & xxxx]]></string>
     <string name="skip">Skip</string>
+    <string name="play_game">Play Game</string>
+    <string name="setting">Setting</string>
+    <string name="help">Help</string>
+    <string name="Menu">Menu</string>
 </resources>
