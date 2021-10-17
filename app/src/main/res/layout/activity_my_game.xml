@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/apple_background_game"
+    android:padding="15dp"
+
+    >
+
+
+    <TableLayout
+        android:id="@+id/tl_table"
+        android:layout_width="700dp"
+        android:layout_height="320dp"
+        android:stretchColumns="*"
+        android:background="@drawable/game_board_boundary">
+
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/tv_numGame"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tl_table"
+        android:layout_marginTop="20sp"
+        android:text="@string/num_of_game"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_numMine"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tl_table"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20sp"
+        android:layout_toRightOf="@+id/tv_numGame"
+        android:text="@string/num_of_mine"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tv_numScan"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tl_table"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20sp"
+        android:layout_toRightOf="@+id/tv_numMine"
+        android:text="@string/scans"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+
+
+
+</RelativeLayout>

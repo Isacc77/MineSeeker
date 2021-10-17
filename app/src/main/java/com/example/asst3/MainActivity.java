@@ -1,5 +1,6 @@
 package com.example.asst3;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -17,6 +18,7 @@ import com.example.asst3.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,10 +28,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
+        playGame();
 
     }
+
+
+
+    private void playGame() {
+        final Button game=findViewById(R.id.btn_play);
+
+        game.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(MainActivity.this,MyGame.class);
+                startActivity(intent);
+            }
+
+
+
+        });
+    }
+
+
+
+
+
 
 
 
