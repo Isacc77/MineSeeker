@@ -2,11 +2,17 @@ package com.example.asst3;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -22,15 +28,16 @@ public class MyGame extends AppCompatActivity {
 
     TextView tv_Mine;
     TextView tv_Scan;
+    TextView tv_totalMines;
 
-    Animation rotateAnim;
-    Animation anima;
+    TextView tv_numOfGame;
 
     Button buttons[][];
 
-    int numScan=0;
-    int minesFound =0;
+    int numScan = 0;
+    int minesFound = 0;
 
+    Animation rotateAnim;
 
 
     @Override
@@ -42,9 +49,15 @@ public class MyGame extends AppCompatActivity {
 
         manager = MineManager.getInstance();
 
+        tv_totalMines = findViewById(R.id.tv_total);
+        tv_totalMines.setText("Total Intruders: " + manager.getMines());
+
+        populateButtons();
+
+
+        updateUI();
+
     }
-
-
 
 
     private void populateButtons() {
@@ -53,18 +66,13 @@ public class MyGame extends AppCompatActivity {
 
         TableLayout table = (TableLayout) findViewById(R.id.tl_table);
 
+        buttons = new Button[manager.getRows()][manager.getCols()];
 
-
-        buttons = new Button[manager.getRows()][manager.getColumns()];
-
-        manager.populateMines();
-
+        manager.putMine();
 
 
         for (int r = 0; r < manager.getRows(); r++) {
-
             TableRow tableRow = new TableRow(this);
-
             tableRow.setLayoutParams(new TableLayout.LayoutParams(
                     TableLayout.LayoutParams.MATCH_PARENT,
                     TableLayout.LayoutParams.MATCH_PARENT,
@@ -72,13 +80,11 @@ public class MyGame extends AppCompatActivity {
 
             table.addView(tableRow);
 
-            for (int c = 0; c < manager.getCols(); c++) {
 
+            for (int c = 0; c < manager.getCols(); c++) {
                 final int FINAL_COL = c;
                 final int FINAL_ROW = r;
-
                 Button button = new Button(this);
-
 
                 button.setLayoutParams(new TableRow.LayoutParams(
                         TableRow.LayoutParams.MATCH_PARENT,
@@ -87,13 +93,9 @@ public class MyGame extends AppCompatActivity {
 
                 button.setPadding(0, 0, 0, 0);
 /////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         gridButtonClicked(FINAL_ROW, FINAL_COL);
 
                     }
@@ -106,40 +108,76 @@ public class MyGame extends AppCompatActivity {
     }
 
 
-
-
-
-
-
     private void gridButtonClicked(int row, int col) {
-        lockButtonSizes();
 
         Mine temp = manager.getGameBoard(row, col);
 
-        if(temp.isMine()){
+        lockButtonSizes();
 
-            if(){  //first tap show image
-
-                minesFound++;
-                numScan++;
-                updateUI();
-
-
-            }else{  //second tap show num
-
-
-
-            }
-
-        }else{
-            //show num
+        //first tap mine
+        if (temp.getStatus() == 1) {
+            minesFound++;
             numScan++;
+            showMine(row, col);
+            temp.setStatus(2);
+            updateUI();
 
+
+            //second tap mine
+        } else if (temp.getStatus() == 2) {
+
+            showInt(row, col);
+            temp.setStatus(3);
+            updateUI();
+
+
+            //more than two times
+        } else if (temp.getStatus() > 2) {
+
+
+        }//not mine
+        else {
+            numScan++;
+            showInt(row, col);
+            temp.setStatus(4);
+            updateUI();
 
         }
 
     }
 
+
+    private void showInt(int row, int col) {
+
+        Button button = buttons[row][col];
+
+        Button temp = button;
+        temp.setText("" + cal_mine(row, col));
+        temp.setTextColor(Color.parseColor("#FF0117"));
+        temp.setAlpha(1);
+    }
+
+
+    private void showMine(int row, int col) {
+        manager = MineManager.getInstance();
+
+        Button button = buttons[row][col];
+
+        int newWidth = button.getWidth();
+        int newHeight = button.getHeight();
+
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.android_man3);
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+        Resources resource = getResources();
+        button.setBackground(new BitmapDrawable(resource, scaledBitmap));
+
+        rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate);
+
+        if (minesFound < manager.getMines()) {
+            button.startAnimation(rotateAnim);
+        }
+        button.setText("");
+    }
 
 
     private void updateUI() {
@@ -147,42 +185,65 @@ public class MyGame extends AppCompatActivity {
         manager = MineManager.getInstance();
 
         tv_Mine = findViewById(R.id.tv_numMine);
-
         tv_Scan = findViewById(R.id.tv_numScan);
 
+        tv_Mine.setText("Intruders Found: " + minesFound);
+        tv_Scan.setText("Scans: " + numScan);
 
-        tv_Mine.setText("" + tv_Mine);
 
-        tv_Scan.setText("" + numScan);
+        for (int i = 0; i < manager.getRows(); i++) {
+            for (int j = 0; j < manager.getCols(); j++) {
 
-        for (int r = 0; r < manager.getRows(); r++) {
-            for (int c = 0; c < manager.getCols(); c++) {
-                updateRowsAndCols(r, c);
+                if (manager.getGameBoard(i, j).getStatus() >2 ) {
+                    Button button = buttons[i][j];
+                    button.setText("" + cal_mine(i,j));
+                }
             }
         }
+
+
+        gameOver();
+
     }
 
 
-
-
-    private void updateRowsAndCols(int row, int col) {
+    private int cal_mine(int r, int c) {
 
         manager = MineManager.getInstance();
 
         int count = 0;
+
         for (int i = 0; i < manager.getCols(); i++) {
 
-            Mine temp = manager.getGameBoard(row, i);
+            Mine temp = manager.getGameBoard(r, i);
 
-
+            if (temp.getStatus() == 1) {
+                count++;
+            }
         }
 
 
+        for (int j = 0; j < manager.getRows(); j++) {
 
+            Mine temp = manager.getGameBoard(j, c);
+            if (temp.getStatus() == 1) {
+                count++;
+
+            }
+        }
+        return count;
     }
 
 
+    private void gameOver() {
 
+        if (minesFound == manager.getMines()) {
+            FragmentManager fM = getSupportFragmentManager();
+            MyDialog dialog = new MyDialog();
+            dialog.show(fM, "End Game");
+        }
+
+    }
 
 
     private void lockButtonSizes() {
@@ -201,19 +262,6 @@ public class MyGame extends AppCompatActivity {
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
