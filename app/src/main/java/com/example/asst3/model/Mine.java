@@ -1,11 +1,17 @@
 package com.example.asst3.model;
 
+
+
 public class Mine {
 
     /**
-     * status ==0  tapped        not mine & show int
-     * status == 1 tapped            mine & show image
-     * status == 2 tapped two times  mine & show image & show int
+     * status == 0 untapped      not mine default
+     * status == 1 untapped          mine
+     *
+     * status == 2 tapped            mine & 1-> 2 show image
+     * status == 3 tapped two times  mine & 2-> 3 show image & show int
+     *
+     * status == 4 not mine tapped more than one times & no response
      */
 
 

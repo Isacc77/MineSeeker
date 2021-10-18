@@ -57,11 +57,7 @@ public class MyGame extends AppCompatActivity {
 
         updateUI();
 
-
-
-
     }
-
 
 
     private void populateButtons() {
@@ -100,7 +96,6 @@ public class MyGame extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //    java.lang.NullPointerException: Attempt to invoke virtual method 'int android.graphics.Bitmap.getWidth()' on a null object reference
                         gridButtonClicked(FINAL_ROW, FINAL_COL);
 
                     }
@@ -115,9 +110,7 @@ public class MyGame extends AppCompatActivity {
 
     private void gridButtonClicked(int row, int col) {
 
-
         Mine temp = manager.getGameBoard(row, col);
-
 
         lockButtonSizes();
 
@@ -125,23 +118,28 @@ public class MyGame extends AppCompatActivity {
         if (temp.getStatus() == 1) {
             minesFound++;
             numScan++;
+            showMine(row, col);
             temp.setStatus(2);
-            showMine(row,col);
             updateUI();
 
-        //second tap mine
-        }else if(temp.getStatus() == 2){
+
+            //second tap mine
+        } else if (temp.getStatus() == 2) {
+
+            showInt(row, col);
             temp.setStatus(3);
             updateUI();
 
-        //more than two times
-        }else if(temp.getStatus() >2){
+
+            //more than two times
+        } else if (temp.getStatus() > 2) {
 
 
         }//not mine
-        else{
+        else {
             numScan++;
-            temp.setStatus(3);
+            showInt(row, col);
+            temp.setStatus(4);
             updateUI();
 
         }
@@ -149,31 +147,36 @@ public class MyGame extends AppCompatActivity {
     }
 
 
+    private void showInt(int row, int col) {
+
+        Button button = buttons[row][col];
+
+        Button temp = button;
+        temp.setText("" + cal_mine(row, col));
+        temp.setTextColor(Color.parseColor("#FF0117"));
+        temp.setAlpha(1);
+    }
+
 
     private void showMine(int row, int col) {
         manager = MineManager.getInstance();
 
         Button button = buttons[row][col];
 
-
         int newWidth = button.getWidth();
         int newHeight = button.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.android_man);
-        //java.lang.NullPointerException: Attempt to invoke virtual method 'int android.graphics.Bitmap.getWidth()' on a null object reference
+
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.android_man3);
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
         Resources resource = getResources();
         button.setBackground(new BitmapDrawable(resource, scaledBitmap));
-
-//        button.setAlpha(1);
 
         rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate);
 
         if (minesFound < manager.getMines()) {
             button.startAnimation(rotateAnim);
         }
-
         button.setText("");
-
     }
 
 
@@ -184,72 +187,62 @@ public class MyGame extends AppCompatActivity {
         tv_Mine = findViewById(R.id.tv_numMine);
         tv_Scan = findViewById(R.id.tv_numScan);
 
-        tv_Mine.setText("intruders Found: " + tv_Mine);
+        tv_Mine.setText("Intruders Found: " + minesFound);
         tv_Scan.setText("Scans: " + numScan);
 
-        for (int r = 0; r < manager.getRows(); r++) {
-            for (int c = 0; c < manager.getCols(); c++) {
-                rowAndColResponse(r, c);
+
+        for (int i = 0; i < manager.getRows(); i++) {
+            for (int j = 0; j < manager.getCols(); j++) {
+
+                if (manager.getGameBoard(i, j).getStatus() >2 ) {
+                    Button button = buttons[i][j];
+                    button.setText("" + cal_mine(i,j));
+                }
             }
         }
+
+
+        gameOver();
+
     }
 
 
-    private void rowAndColResponse(int row, int col) {
+    private int cal_mine(int r, int c) {
 
         manager = MineManager.getInstance();
 
         int count = 0;
-        //////////////////////////////////////////////////////////////////////
 
         for (int i = 0; i < manager.getCols(); i++) {
 
-            Mine temp = manager.getGameBoard(row, i);
+            Mine temp = manager.getGameBoard(r, i);
 
-            if (temp.getStatus()== 1) {
+            if (temp.getStatus() == 1) {
                 count++;
             }
         }
 
 
         for (int j = 0; j < manager.getRows(); j++) {
-            Mine temp = manager.getGameBoard(j, col);
-            if (temp.getStatus()== 1) {
+
+            Mine temp = manager.getGameBoard(j, c);
+            if (temp.getStatus() == 1) {
                 count++;
+
             }
         }
-
-
-
-        if (minesFound >= manager.getMines()) {
-            if (manager.getGameBoard(row, col).getStatus()==2) {
-                Button button = buttons[row][col];
-                button.setText("" + count);
-                button.setAlpha(1);
-            }
-
-            gameOver();
-
-        } else {
-            if (manager.getGameBoard(row, col).getStatus()==2) {
-                Button button = buttons[row][col];
-                button.setText("" + count);
-                button.setTextSize(10);
-                if (manager.getGameBoard(row, col).getStatus()==2) {
-                    button.setTextColor(Color.parseColor("#FFA652"));
-                }
-            }
-        }
-
-
-//////////////////////////////////////////////////////////////////////
-
+        return count;
     }
 
+
     private void gameOver() {
-        FragmentManager fM = getSupportFragmentManager();
-        MyDialog dialog = new MyDialog();
-        dialog.show(fM, "End Game");
+
+        if (minesFound == manager.getMines()) {
+            FragmentManager fM = getSupportFragmentManager();
+            MyDialog dialog = new MyDialog();
+            dialog.show(fM, "End Game");
+        }
+
     }
 
 

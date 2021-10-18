@@ -9,7 +9,7 @@ public class MineManager {
     private int rows = 4;
     private int cols = 7;
     private int mines = 8;
-    private Mine[][] gameBoard = new Mine[rows][cols];
+    private Mine[][] gameBoard;
 
     private static MineManager instance;
 
@@ -28,6 +28,7 @@ public class MineManager {
 
     public void putMine() {
 
+        gameBoard = new Mine[rows][cols];
 
         for (int r = 0; r < rows; r++) {
 
@@ -40,10 +41,20 @@ public class MineManager {
 
         Random rand = new Random();
         int r, c;
-        for (int i = 0; i < mines; i++) {
+
+        int count = 0;
+
+        while(count != mines){
+
             r = rand.nextInt(rows);
+
             c = rand.nextInt(cols);
-            gameBoard[r][c].setStatus(1);
+
+            if(gameBoard[r][c].getStatus()!= 1 ){
+                gameBoard[r][c].setStatus(1);
+                count++;
+            }
+
         }
 
     }
