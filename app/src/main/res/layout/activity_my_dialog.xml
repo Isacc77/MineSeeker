@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="17dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="0dp"
         android:fontFamily="serif"
         android:text="@string/txt_dialog"
