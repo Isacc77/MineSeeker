@@ -17,7 +17,9 @@
     <string name="help">Help</string>
     <string name="Menu">Menu</string>
     <string name="num_of_game">Num of Game:</string>
-    <string name="num_of_mine">Num of intruders:</string>
+    <string name="num_of_mine">intruders Found:</string>
     <string name="game_played">Game played:</string>
     <string name="scans">Scans:</string>
+    <string name="total_num">Total Intruders:</string>
+    <string name="txt_dialog">Congratulations! You prevent Android eat Apple</string>
 </resources>
