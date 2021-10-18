@@ -29,21 +29,29 @@ public class MineManager {
     public void putMine() {
 
 
-        Random rand = new Random();
-        int r,c;
-        for (int i = 0; i < mines;i++){
-            r = rand.nextInt(rows);
-            c = rand.nextInt(cols);
+        for (int r = 0; r < rows; r++) {
 
-            if ( !gameBoard[r][c].isMine() ) {
-                gameBoard[r][c].setMine(true);
+            for (int c = 0; c < cols; c++) {
+
+                gameBoard[r][c]=new Mine(0);
+
             }
-
         }
 
+        Random rand = new Random();
+        int r, c;
+        for (int i = 0; i < mines; i++) {
+            r = rand.nextInt(rows);
+            c = rand.nextInt(cols);
+            gameBoard[r][c].setStatus(1);
+        }
 
     }
 
+
+    public int getMines() {
+        return mines;
+    }
 
     public int getRows() {
         return rows;
