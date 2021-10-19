@@ -23,6 +23,12 @@ import android.widget.TextView;
 import com.example.asst3.model.Mine;
 import com.example.asst3.model.MineManager;
 
+/**
+ *  MyGame class provide the game screen
+ *  It can show the GameBoard and Game data (Number of Game played, Number of total Mines, Number of Mines found, Number of scan used )
+ *  Citation: control 2D array inspired by https://www.cnblogs.com/thomasbc/p/6907573.html
+ *
+ */
 
 public class MyGame extends AppCompatActivity {
 
@@ -118,6 +124,7 @@ public class MyGame extends AppCompatActivity {
         editor.putInt("Total Game played", total);
         editor.apply();
     }
+
 
 
     private void populateButtons() {
@@ -268,6 +275,7 @@ public class MyGame extends AppCompatActivity {
 
     }
 
+    // Citation: control 2D array inspired by https://www.cnblogs.com/thomasbc/p/6907573.html
 
     private int cal_mine(int r, int c) {
 

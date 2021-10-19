@@ -6,6 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ *
+ * help screen will provide some information about game,author,reference
+ *
+ */
+
+
 public class MyHelp extends AppCompatActivity {
 
     @Override

@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 /**
  * This class is for displaying welcome screen
- *
+ * when user enter the game, welcome screen will provide the name of game and author of the game.
  * Citation: Animation inspired by  https://www.bilibili.com/video/BV1Rt411e76H?p=41 & https://www.youtube.com/watch?v=goVoYf2qie0&ab_channel=CoderScionMedia
  *
  */

@@ -11,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+/**
+ * This class will show the dialog for responding user finished game
+ *
+ */
+
 public class MyDialog extends AppCompatDialogFragment {
 
     @Override
