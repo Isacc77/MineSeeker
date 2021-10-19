@@ -41,13 +41,10 @@
                 android:paddingTop="5dp"
                 android:text="@string/about_game"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" >
+                android:textColor="#FF0117"
+                android:textSize="18dp">
 
             </TextView>
-
-
 
 
             <TextView
@@ -62,21 +59,37 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:autoLink="web"/>
 
             <TextView
-                android:id="@+id/tv_reference"
+                android:id="@+id/tv_reference_i"
                 android:layout_width="620dp"
                 android:layout_height="270dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/game_board_boundary"
                 android:paddingLeft="20sp"
                 android:paddingTop="5dp"
-                android:text="@string/reference"
+                android:text="@string/reference_i"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="15dp"
+                android:autoLink="web"/>
+
+            <TextView
+                android:id="@+id/tv_reference_c"
+                android:layout_width="620dp"
+                android:layout_height="270dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/game_board_boundary"
+                android:paddingLeft="20sp"
+                android:paddingTop="5dp"
+                android:text="@string/reference_c"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:autoLink="web"/>
+
+
 
 
         </LinearLayout>

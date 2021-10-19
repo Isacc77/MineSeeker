@@ -14,6 +14,15 @@ import android.widget.Toast;
 
 import com.example.asst3.model.MineManager;
 
+
+/**
+ * This class uses SharedPreferences to store the option on the setting screen.
+ * Finally, this data will be transmitted to My Game class.
+ * User will get new Game based on the Number of Mines and Game Size he/she selected
+ *
+ */
+
+
 public class MyOption extends AppCompatActivity {
 
     private MineManager manager;

@@ -31,7 +31,58 @@
         Please choose the game size and number of mines.
         Please choose the game size and number of mines.
         Please choose the game size and number of mines.</string>
-    <string name="about_game">About Game</string>
-    <string name="about_author">About Author</string>
-    <string name="reference">Reference</string>
+
+    <string name="about_game"> About Game
+        \nThe Android company sent some spies to the Apple research center for stealing a new IOS upgrading plan. Hence, you got a job from Tim to find those spies and protect the new plan!
+        \nAfter starting the game, you should find Android men (spy) by clicking those little blocks.Those Android men hide in those blocks. To win the game, you should find them all.
+        \nAfter each clicking those blocks, you might find the target or get information about the number of spies on the row and column.
+        \nHowever, your every scanning will be recorded. You should take the least scan and win the game.
+        \nGood luck and enjoy the game ！
+    </string>
+
+
+    <string name="about_author">About the Author
+        \n
+        \nThis game is developed by Shuai Li (Isaac lee)
+        \n
+        \n
+        \nAbout the course
+        \n
+        \nFind more information on the website:
+        \nhttps://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home
+    </string>
+
+
+    <string name="reference_i">Reference Image
+    \neat_apple
+    \nhttps://tariqazam.wixsite.com/wwwcheapandroidinfo
+    \neat_apple2
+    \nhttps://zhuanlan.zhihu.com/c_1068541107364933632
+    \nandroidMan
+    \nhttps://medium.com/the-android-guy
+    \nandroid_man3
+    \nhttps://grabcad.com/library/beach-android-man-1
+    \napple_company_main
+    \nhttps://www.startingbusiness.com/blog/business-strategy-apple
+    \napple_company_main
+    \nhttps://sites.google.com/site/applecompany121/home/basic-information
+    \ntim_cook_help
+    \nhttps://www.theverge.com/2019/12/17/21026112/apple-tim-cook-iphone-watch-tv-decade-blockbusters-walt-mossberg
+
+
+
+    </string>
+    <string name="reference_c">Reference Code
+    \n
+    \nAnimation for welcome screen and mine button being clicked inspired by
+    \nhttps://www.bilibili.com/video/BV1Rt411e76H?p=41
+    \nhttps://www.youtube.com/watch?v=goVoYf2qie0&amp;ab_channel=CoderScionMedia
+    \n
+    \n
+    \ncontrol 2D array inspired by https://www.cnblogs.com/thomasbc/p/6907573.html
+
+
+    </string>
+
+
 </resources>

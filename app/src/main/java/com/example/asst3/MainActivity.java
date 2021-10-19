@@ -20,6 +20,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+
+/**
+ * This class provide menu and three button to go to different activities (game,setting,help)
+ *
+ */
+
+
+
+
+
+
+
 public class MainActivity extends AppCompatActivity {
 
 

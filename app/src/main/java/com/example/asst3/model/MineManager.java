@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+/**
+ * MineManager for storing Mine and putting Mine on the GameBroad
+ * Singleton Model
+ *
+ */
+
 public class MineManager {
 
     private int rows = 4;
