@@ -23,40 +23,59 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
 
+    private Button btnGame;
+    private Button btnSetting;
+    private Button btnHelp;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        playGame();
+        btnGame = findViewById(R.id.btn_play);
+        btnSetting = findViewById(R.id.btn_setting);
+        btnHelp = findViewById(R.id.btn_help);
 
+
+
+        setListeners();
     }
 
 
+    private void setListeners() {
+        OnClick onClick = new OnClick();
+        btnGame.setOnClickListener(onClick);
+        btnSetting.setOnClickListener(onClick);
+        btnHelp.setOnClickListener(onClick);
+    }
 
-    private void playGame() {
-        final Button game=findViewById(R.id.btn_play);
 
-        game.setOnClickListener(new View.OnClickListener(){
+    private class OnClick implements View.OnClickListener {
 
-            @Override
-            public void onClick(View v) {
+        Intent intent = null;
 
-                Intent intent=new Intent(MainActivity.this,MyGame.class);
-                startActivity(intent);
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+
+                case R.id.btn_play:
+                    intent = new Intent(MainActivity.this, MyGame.class);
+                    break;
+
+                case R.id.btn_setting:
+                    intent = new Intent(MainActivity.this, MyOption.class);
+                    break;
+
+                case R.id.btn_help:
+                    intent = new Intent(MainActivity.this, MyHelp.class);
+                    break;
+
             }
+            startActivity(intent);
+        }
 
-
-
-        });
     }
-
-
-
-
-
-
-
 
 
 }

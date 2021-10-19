@@ -10,10 +10,9 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="welcome_to_android_men_seeker">Welcome to Android men seeker</string>
-    <string name="author_info"><![CDATA[By: Shuai Li & xxxx]]></string>
+    <string name="author_info"><![CDATA[By: Shuai Li ]]></string>
     <string name="skip">Skip</string>
     <string name="play_game">Play Game</string>
-    <string name="setting">Setting</string>
     <string name="help">Help</string>
     <string name="Menu">Menu</string>
     <string name="num_of_game">Num of Game:</string>
@@ -22,4 +21,17 @@
     <string name="scans">Scans:</string>
     <string name="total_num">Total Intruders:</string>
     <string name="txt_dialog">Congratulations! You prevent Android eat Apple</string>
+    <string name="setting">Setting</string>
+    <string name="please_choose_the_number_of_mines">Please choose the number of mines:</string>
+    <string name="clear_game_history">Clear Game History</string>
+    <string name="please_choose_the_gameboard_size">Please choose the GameBoard Size</string>
+    <string name="gameBoard_size">GameBoard Size:</string>
+    <string name="mines_number">Mines number:</string>
+    <string name="notice_info">
+        Please choose the game size and number of mines.
+        Please choose the game size and number of mines.
+        Please choose the game size and number of mines.</string>
+    <string name="about_game">About Game</string>
+    <string name="about_author">About Author</string>
+    <string name="reference">Reference</string>
 </resources>
