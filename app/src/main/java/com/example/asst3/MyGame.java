@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,7 +31,6 @@ public class MyGame extends AppCompatActivity {
     TextView tv_Mine;
     TextView tv_Scan;
     TextView tv_totalMines;
-
     TextView tv_numOfGame;
 
     Button buttons[][];
@@ -47,16 +48,75 @@ public class MyGame extends AppCompatActivity {
         //game board
         setContentView(R.layout.activity_my_game);
 
+        checkSharedPreferences();
         manager = MineManager.getInstance();
 
-        tv_totalMines = findViewById(R.id.tv_total);
+        tv_totalMines = findViewById(R.id.tv_totalMines);
         tv_totalMines.setText("Total Intruders: " + manager.getMines());
 
         populateButtons();
-
-
         updateUI();
 
+    }
+
+
+    private void checkSharedPreferences() {
+
+        tv_numOfGame = findViewById(R.id.tv_numGame);
+        manager = MineManager.getInstance();
+
+
+        int savedTotal = getNumGamePlayed(this);
+        int savedMines = getMinesNum(this);
+        int savedRows = getRowsNum(this);
+        int savedCols = getColsNum(this);
+
+
+        savedTotal++;
+        tv_numOfGame.setText("Game Played: " + savedTotal);
+        saveTotal(savedTotal);
+        manager.setMines(savedMines);
+        manager.setCols(savedCols);
+        manager.setRows(savedRows);
+
+
+    }
+
+
+    static public int getNumGamePlayed(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AppPreferences", MODE_PRIVATE);
+
+        return prefs.getInt("Total Game played", 0);
+    }
+
+
+    static public int getMinesNum(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AppPreferences", MODE_PRIVATE);
+
+        int defaultValue = context.getResources().getInteger(R.integer.defaultNumMines);
+        return prefs.getInt("Num of mines choose", defaultValue);
+    }
+
+    static public int getRowsNum(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AppPreferences", MODE_PRIVATE);
+
+        int defaultValue = context.getResources().getInteger(R.integer.defaultNumRows);
+        return prefs.getInt("Num of rows choose", defaultValue);
+    }
+
+    static public int getColsNum(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AppPreferences", MODE_PRIVATE);
+
+        int defaultValue = context.getResources().getInteger(R.integer.defaultNumCols);
+        return prefs.getInt("Num of columns choose", defaultValue);
+    }
+
+
+    private void saveTotal(int total) {
+        SharedPreferences pref = this.getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("Total Game played", total);
+        editor.apply();
     }
 
 
@@ -67,6 +127,7 @@ public class MyGame extends AppCompatActivity {
         TableLayout table = (TableLayout) findViewById(R.id.tl_table);
 
         buttons = new Button[manager.getRows()][manager.getCols()];
+
 
         manager.putMine();
 
@@ -92,7 +153,8 @@ public class MyGame extends AppCompatActivity {
                         1.0f));
 
                 button.setPadding(0, 0, 0, 0);
-/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -194,9 +256,9 @@ public class MyGame extends AppCompatActivity {
         for (int i = 0; i < manager.getRows(); i++) {
             for (int j = 0; j < manager.getCols(); j++) {
 
-                if (manager.getGameBoard(i, j).getStatus() >2 ) {
+                if (manager.getGameBoard(i, j).getStatus() > 2) {
                     Button button = buttons[i][j];
-                    button.setText("" + cal_mine(i,j));
+                    button.setText("" + cal_mine(i, j));
                 }
             }
         }

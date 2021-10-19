@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="gameBoardRows">
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
+
+    <integer-array name="gameBoardCols">
+        <item>6</item>
+        <item>10</item>
+        <item>15</item>
+    </integer-array>
+
+    <integer name="defaultNumRows">4</integer>
+    <integer name="defaultNumCols">7</integer>
+
+</resources>

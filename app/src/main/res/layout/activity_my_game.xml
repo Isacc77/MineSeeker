@@ -30,8 +30,8 @@
         android:textSize="15dp" />
 
     <TextView
-        android:id="@+id/tv_total"
-        android:layout_width="120dp"
+        android:id="@+id/tv_totalMines"
+        android:layout_width="160dp"
         android:layout_height="20dp"
         android:layout_below="@+id/tl_table"
         android:layout_marginLeft="20dp"
@@ -57,7 +57,7 @@
         android:id="@+id/tv_numScan"
         android:layout_width="120dp"
         android:layout_height="20dp"
-        android:layout_below="@+id/tv_total"
+        android:layout_below="@+id/tv_totalMines"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/tv_numMine"
