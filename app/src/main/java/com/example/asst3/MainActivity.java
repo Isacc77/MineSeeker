@@ -27,11 +27,6 @@ import android.widget.Button;
  */
 
 
-
-
-
-
-
 public class MainActivity extends AppCompatActivity {
 
 
