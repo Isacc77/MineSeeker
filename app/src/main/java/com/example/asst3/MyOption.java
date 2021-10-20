@@ -20,6 +20,7 @@ import com.example.asst3.model.MineManager;
  * Finally, this data will be transmitted to My Game class.
  * User will get new Game based on the Number of Mines and Game Size he/she selected
  *
+ *
  */
 
 
@@ -181,7 +182,6 @@ public class MyOption extends AppCompatActivity {
 
     static public int getMinesNum(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("AppPreferences", MODE_PRIVATE);
-//        int defaultNumOfMines = context.getResources().getInteger(R.integer.defaultNumMines);
         return prefs.getInt("Num of mines choose", context.getResources().getInteger(R.integer.defaultNumMines));
     }
 
@@ -189,14 +189,12 @@ public class MyOption extends AppCompatActivity {
     static public int getRowsNum(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("AppPreferences", MODE_PRIVATE);
 
-//        int defaultValue = context.getResources().getInteger(R.integer.defaultNumRows);
         return prefs.getInt("Num of rows choose", context.getResources().getInteger(R.integer.defaultNumRows));
     }
 
     static public int getColsNum(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("AppPreferences", MODE_PRIVATE);
 
-//        int defaultValue = context.getResources().getInteger(R.integer.defaultNumCols);
         return prefs.getInt("Num of columns choose", context.getResources().getInteger(R.integer.defaultNumCols));
     }
 
