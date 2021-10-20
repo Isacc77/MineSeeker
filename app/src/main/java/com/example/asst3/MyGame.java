@@ -28,6 +28,7 @@ import com.example.asst3.model.MineManager;
  *  It can show the GameBoard and Game data (Number of Game played, Number of total Mines, Number of Mines found, Number of scan used )
  *  Citation: control 2D array inspired by https://www.cnblogs.com/thomasbc/p/6907573.html
  *
+ *
  */
 
 public class MyGame extends AppCompatActivity {

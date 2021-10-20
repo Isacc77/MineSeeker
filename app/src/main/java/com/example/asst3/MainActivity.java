@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         btnGame = findViewById(R.id.btn_play);
         btnSetting = findViewById(R.id.btn_setting);
         btnHelp = findViewById(R.id.btn_help);
-
-
-
         setListeners();
     }
 
