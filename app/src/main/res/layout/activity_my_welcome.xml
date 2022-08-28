@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyWelcome"
-    android:background="@drawable/apple_company_main">
-
+    android:background="@drawable/apple_company_main"
+    tools:context=".MyWelcome">
 
     <ImageView
         android:id="@+id/iv_welcome"
@@ -59,9 +58,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_author"
         app:layout_constraintStart_toStartOf="parent" />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

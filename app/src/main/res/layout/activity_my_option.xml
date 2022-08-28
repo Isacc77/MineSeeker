@@ -15,7 +15,6 @@
         app:layout_constraintStart_toStartOf="@+id/tv_mines"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <RadioGroup
         android:id="@+id/rg_size"
         android:layout_width="wrap_content"
@@ -39,7 +38,6 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/tv_mines"
@@ -75,16 +73,13 @@
         android:id="@+id/tv_notice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="32dp"
         android:ellipsize="marquee"
-
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:marqueeRepeatLimit="marquee_forever"
         android:singleLine="true"
         android:text="@string/notice_info"
-
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="italic"

@@ -1,6 +1,5 @@
 package com.example.asst3.model;
 
-
 /**
  * Mine class
  * basic logic:
@@ -11,16 +10,12 @@ package com.example.asst3.model;
  * status == 4 not mine tapped more than one times & no response
  */
 
-
-
 public class Mine {
 
     private int status;
 
     public Mine(int status) {
-
         this.status = status;
-
     }
 
     public int getStatus() {
@@ -30,7 +25,4 @@ public class Mine {
     public void setStatus(int status) {
         this.status = status;
     }
-
-
-
 }

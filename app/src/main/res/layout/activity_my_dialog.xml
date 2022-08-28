@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/dialog_boundary">
 
-
     <TextView
         android:id="@+id/tv_gameOver"
         android:layout_width="321dp"
@@ -39,6 +38,5 @@
         android:visibility="visible"
         tools:srcCompat="@tools:sample/avatars[1]"
         tools:visibility="visible" />
-
 
 </RelativeLayout>

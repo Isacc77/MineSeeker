@@ -7,7 +7,6 @@ import java.util.Random;
 /**
  * MineManager for storing Mine and putting Mine on the GameBroad
  * Singleton Model
- *
  */
 
 public class MineManager {
@@ -16,13 +15,10 @@ public class MineManager {
     private int cols = 7;
     private int mines = 8;
     private Mine[][] gameBoard;
-
     private static MineManager instance;
-
 
     public MineManager() {
     }
-
 
     public static MineManager getInstance() {
         if (instance == null) {
@@ -31,40 +27,25 @@ public class MineManager {
         return instance;
     }
 
-
     public void putMine() {
-
         gameBoard = new Mine[rows][cols];
-
         for (int r = 0; r < rows; r++) {
-
             for (int c = 0; c < cols; c++) {
-
-                gameBoard[r][c]=new Mine(0);
-
+                gameBoard[r][c] = new Mine(0);
             }
         }
-
         Random rand = new Random();
         int r, c;
-
         int count = 0;
-
-        while(count != mines){
-
+        while (count != mines) {
             r = rand.nextInt(rows);
-
             c = rand.nextInt(cols);
-
-            if(gameBoard[r][c].getStatus()!= 1 ){
+            if (gameBoard[r][c].getStatus() != 1) {
                 gameBoard[r][c].setStatus(1);
                 count++;
             }
-
         }
-
     }
-
 
     public int getMines() {
         return mines;
@@ -86,7 +67,6 @@ public class MineManager {
         this.cols = cols;
     }
 
-
     public int getGameBoard() {
         return mines;
     }
@@ -95,15 +75,11 @@ public class MineManager {
         this.mines = mines;
     }
 
-
     public Mine getGameBoard(int rows, int cols) {
         return gameBoard[rows][cols];
     }
 
-
     public void setGameBoard(Mine[][] gameBoard) {
         this.gameBoard = gameBoard;
     }
-
-
 }
