@@ -13,16 +13,15 @@ import android.widget.ImageView;
 
 /**
  * This class will show the dialog for responding user finished game
- *
  */
 
 public class MyDialog extends AppCompatDialogFragment {
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState){
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         //Create the view to show
         View v = LayoutInflater.from(getActivity())
-                .inflate(R.layout.activity_my_dialog,null);
+                .inflate(R.layout.activity_my_dialog, null);
 
         ImageView iv_1 = v.findViewById(R.id.iv_1);
         iv_1.setImageDrawable(getResources().getDrawable(R.drawable.eat_apple2));
@@ -39,7 +38,7 @@ public class MyDialog extends AppCompatDialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setTitle("Game Over!")
                 .setView(v)
-                .setPositiveButton(android.R.string.ok,listener)
+                .setPositiveButton(android.R.string.ok, listener)
                 .create();
     }
 }

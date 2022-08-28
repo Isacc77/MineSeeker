@@ -12,7 +12,8 @@
 
         <activity
             android:name=".MyOption"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".MyGame"
             android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
